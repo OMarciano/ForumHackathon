@@ -60,7 +60,7 @@ class Welcome extends CI_Controller {
     if (isset($accessToken)) {
         $this->session->set_userdata('facebook_access_token', (string) $accessToken);
         try {
-            $response = $this->fb->get('/me?fields=id,name,email,picture', $accessToken);
+            $response = $this->fb->get('/me?fields=id,name,email', $accessToken);
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
             echo 'Erro da Graph API: ' . $e->getMessage();
             exit;
