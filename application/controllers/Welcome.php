@@ -24,9 +24,9 @@ class Welcome extends CI_Controller {
     public function __construct()
 {
     parent::__construct();
-    $this->fb = new Facebook\Facebook([
-        'app_id' => '396678370717648',
-        'app_secret' => 'ede22c396a86bac224a8e683ebbb162f',
+    $this->fb = new Facebook\Facebook([                     
+        'app_id' => 'XXXXXXXXXXXXXXX',
+        'app_secret' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
         'default_graph_version' => 'v2.7',
         'persistent_data_handler'=>'session'
     ]);
