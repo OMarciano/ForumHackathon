@@ -34,9 +34,10 @@ class Welcome extends CI_Controller {
     
 	public function index()
 	{
+        $this->load->view('welcome_message');
         
     $helper = $this->fb->getRedirectLoginHelper();
-    $permissions = ['email'];
+    $permissions = ['email', 'user_about_me', 'user_events', 'user_education_history'];
     $loginUrl = $helper->getLoginUrl('http://localhost/fb/index.php/welcome/logado', $permissions);
     echo '<a href="' . htmlspecialchars($loginUrl) . '">Logar com Facebook!</a>';
 		
@@ -60,7 +61,7 @@ class Welcome extends CI_Controller {
     if (isset($accessToken)) {
         $this->session->set_userdata('facebook_access_token', (string) $accessToken);
         try {
-            $response = $this->fb->get('/me?fields=id,name,email', $accessToken);
+            $response = $this->fb->get('/me?fields=id,name,email,about,events,education', $accessToken);
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
             echo 'Erro da Graph API: ' . $e->getMessage();
             exit;
@@ -81,7 +82,7 @@ class Welcome extends CI_Controller {
     foreach ($user as $key => $value) {
         echo $key.": ".$value."
 ";
-    }
- 
+    } 
 }
+
 }
